@@ -1,7 +1,7 @@
 <html>
 
 <head>
-  <script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script>
+  <script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
   <script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script>
 
 </head>
@@ -26,6 +26,7 @@
     position: absolute;
     right: 1em;
   }
+
   button a {
     text-decoration: none;
     color: white;
@@ -50,6 +51,7 @@
     position: absolute;
     left: 1em;
   }
+
   .instructions p {
     text-decoration: none;
     color: white;
@@ -58,110 +60,101 @@
     margin-bottom: .1em;
     font-family: BlinkMacSystemFont;
   }
-
 </style>
+
 <body>
-<div class="">
-  <div class="instructions">
-    <p><strong> W-A-S-D Keys to Move. Click and Drag to Look Around </strong></p>
+  <div class="">
+    <div class="instructions">
+      <p><strong> W-A-S-D Keys to Move. Click and Drag to Look Around </strong></p>
+    </div>
+    <button class="other-work">
+      <a target="_blank" href="http://www.vrdev.yonibinstock.com">See my other work</a>
+    </button>
   </div>
-  <button class="other-work">
-    <a target="_blank" href="http://www.vrdev.yonibinstock.com">See my other work</a>
-  </button>
-</div>
 
 
-<a-scene>
-  <a-assets>
-    <a-mixin id="spin" attribute="rotation" to="0 360 0" repeat="indefinite" easing="linear" dur="96000"></a-mixin>
+  <a-scene>
+    <a-assets>
+      <a-mixin id="spin" attribute="rotation" to="0 360 0" repeat="indefinite" easing="linear" dur="96000"></a-mixin>
 
-    <audio id="blip1" src="music1.mp3"></audio>
-    <audio id="blip2" src="music2.mp3"></audio>
-    <audio id="blip3" src="music3.mp3"></audio>
-    <audio id="blip4" src="music4.mp3"></audio>
-    <audio id="blip5" src="music5.mp3"></audio>
-    <audio id="blip6" src="music6.mp3"></audio>
+      <audio id="blip1" src="music1.mp3"></audio>
+      <audio id="blip2" src="music2.mp3"></audio>
+      <audio id="blip3" src="music3.mp3"></audio>
+      <audio id="blip4" src="music4.mp3"></audio>
+      <audio id="blip5" src="music5.mp3"></audio>
+      <audio id="blip6" src="music6.mp3"></audio>
 
-    <img id="gif1" src="gif1-black.gif">
-    <img id="gif2" src="gif2-black.gif">
-    <img id="gif3" src="gif3-black.gif">
-    <img id="gif4" src="gif4-black.gif">
-    <img id="gif5" src="gif5-black.gif">
-    <img id="gif7" src="gif7-black.gif">
-    <img id="wall1" src="wall1.jpg">
-  </a-assets>
+      <img id="gif1" src="gif1-black.gif">
+      <img id="gif2" src="gif2-black.gif">
+      <img id="gif3" src="gif3-black.gif">
+      <img id="gif4" src="gif4-black.gif">
+      <img id="gif5" src="gif5-black.gif">
+      <img id="gif7" src="gif7-black.gif">
+      <img id="wall1" src="wall1.jpg">
+    </a-assets>
 
-  <a-entity>
-    <a-camera fuse="true" fuseTimeout="500">
-      <a-entity cursor raycaster="far: 30; objects: .intersectable" geometry="primitive: ring; radiusOuter: 0.03;
+    <a-entity>
+      <a-camera fuse="true" fuseTimeout="500">
+        <a-entity cursor raycaster="far: 30; objects: .intersectable" geometry="primitive: ring; radiusOuter: 0.03;
                               radiusInner: 0.01; segmentsTheta: 32" material="color: green; shader: flat"
-                position="0 0 -1.0"></a-entity>
-    </a-camera>
-  </a-entity>
+          position="0 0 -1.0"></a-entity>
+      </a-camera>
+    </a-entity>
 
-  <a-sky color="black"></a-sky>
-
-
-  <!--Ceiling, Walls, and Floor-->
-  <a-plane src="ceiling2.jpg" position="0 5 0" rotation="90 0 0" material="repeat: 25 25" width="25"
-           height="25">>
-  </a-plane>
-
-  <a-plane src="floor.gif" position="0 1 0" rotation="-90 0 0" material="repeat: 50 50" width="25"
-           height="25">>
-  </a-plane>
-
-  <a-plane src="#wall1" position="0 0 10" rotation="0 180 0" material="repeat: 10 10 " width="20"
-           height="10">>
-  </a-plane>
-
-  <a-plane src="#wall1" position="0 0 -10" rotation="0 0 0" material="repeat: 10 10" width="20"
-           height="10"></a-plane>
-
-  <a-plane src="#wall1" position="-10 0 0" rotation="0 90 0" material="repeat: 10 10" width="20"
-           height="10"></a-plane>
-
-  <a-plane src="#wall1" position="10 0 0" rotation="0 -90 0" material="repeat: 10 10" width="20"
-           height="10"></a-plane>
+    <a-sky color="black"></a-sky>
 
 
-  <!--Boxes-->
-  <a-entity geometry="primitive:box;" position="-6 2 -6" material="shader:gif;src:#gif1;"
-            rotation="0 0 -45" class="intersectable" cursor-listener
-            sound__2="on: click; src: #blip1;">
-    <a-animation mixin="spin"></a-animation>
-  </a-entity>
+    <!--Ceiling, Walls, and Floor-->
+    <a-plane src="ceiling2.jpg" position="0 5 0" rotation="90 0 0" material="repeat: 25 25" width="25" height="25">>
+    </a-plane>
 
-  <a-entity geometry="primitive:box;" position="6 2 -6" material="shader:gif;src:#gif2;"
-            rotation="0 0 -45" class="intersectable" cursor-listener
-            sound__2="on: click; src: #blip2;">
-    <a-animation mixin="spin"></a-animation>
-  </a-entity>
+    <a-plane src="floor.gif" position="0 1 0" rotation="-90 0 0" material="repeat: 50 50" width="25" height="25">>
+    </a-plane>
 
-  <a-entity geometry="primitive:box;" position="-6 2 6" material="shader:gif;src:#gif3;"
-            rotation="0 0 -45" class="intersectable" cursor-listener
-            sound__2="on: click; src: #blip3;">
-    <a-animation mixin="spin"></a-animation>
-  </a-entity>
+    <a-plane src="#wall1" position="0 0 10" rotation="0 180 0" material="repeat: 10 10 " width="20" height="10">>
+    </a-plane>
 
-  <a-entity geometry="primitive:box;" position="6 2 6" material="shader:gif;src:#gif4;"
-            rotation="0 0 -45" class="intersectable" cursor-listener
-            sound__2="on: click; src: #blip4;">
-    <a-animation mixin="spin"></a-animation>
-  </a-entity>
-  <a-entity geometry="primitive:box;" position="-6 2 0" material="shader:gif;src:#gif5;"
-            rotation="0 0 -45" class="intersectable"
-            sound__2="on: click; src: #blip5;">
-    <a-animation mixin="spin"></a-animation>
-  </a-entity>
+    <a-plane src="#wall1" position="0 0 -10" rotation="0 0 0" material="repeat: 10 10" width="20" height="10"></a-plane>
 
-  <a-entity geometry="primitive:box;" position="6 2 0" material="shader:gif;src:#gif7;"
-            rotation="0 0 -45" class="intersectable" cursor-listener
-            sound__2="on: click; src: #blip6;">
-    <a-animation mixin="spin"></a-animation>
-  </a-entity>
+    <a-plane src="#wall1" position="-10 0 0" rotation="0 90 0" material="repeat: 10 10" width="20" height="10">
+    </a-plane>
+
+    <a-plane src="#wall1" position="10 0 0" rotation="0 -90 0" material="repeat: 10 10" width="20" height="10">
+    </a-plane>
 
 
-</a-scene>
+    <!--Boxes-->
+    <a-entity geometry="primitive:box;" position="-6 2 -6" material="shader:gif;src:#gif1;" rotation="0 0 -45"
+      class="intersectable" cursor-listener sound__2="on: click; src: #blip1;">
+      <a-animation mixin="spin"></a-animation>
+    </a-entity>
+
+    <a-entity geometry="primitive:box;" position="6 2 -6" material="shader:gif;src:#gif2;" rotation="0 0 -45"
+      class="intersectable" cursor-listener sound__2="on: click; src: #blip2;">
+      <a-animation mixin="spin"></a-animation>
+    </a-entity>
+
+    <a-entity geometry="primitive:box;" position="-6 2 6" material="shader:gif;src:#gif3;" rotation="0 0 -45"
+      class="intersectable" cursor-listener sound__2="on: click; src: #blip3;">
+      <a-animation mixin="spin"></a-animation>
+    </a-entity>
+
+    <a-entity geometry="primitive:box;" position="6 2 6" material="shader:gif;src:#gif4;" rotation="0 0 -45"
+      class="intersectable" cursor-listener sound__2="on: click; src: #blip4;">
+      <a-animation mixin="spin"></a-animation>
+    </a-entity>
+    <a-entity geometry="primitive:box;" position="-6 2 0" material="shader:gif;src:#gif5;" rotation="0 0 -45"
+      class="intersectable" sound__2="on: click; src: #blip5;">
+      <a-animation mixin="spin"></a-animation>
+    </a-entity>
+
+    <a-entity geometry="primitive:box;" position="6 2 0" material="shader:gif;src:#gif7;" rotation="0 0 -45"
+      class="intersectable" cursor-listener sound__2="on: click; src: #blip6;">
+      <a-animation mixin="spin"></a-animation>
+    </a-entity>
+
+
+  </a-scene>
 </body>
+
 </html>

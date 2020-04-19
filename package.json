@@ -1,0 +1,19 @@
+{
+  "name": "sacredgeometryvr",
+  "version": "1.0.0",
+  "description": "Sacred Geometry Room in WebVR https://ybinstock.github.io/SacredGeometryVR/",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ybinstock/SacredGeometryVR.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ybinstock/SacredGeometryVR/issues"
+  },
+  "homepage": "https://github.com/ybinstock/SacredGeometryVR#readme"
+}
